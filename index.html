@@ -1,4 +1,3 @@
-<!app/index.html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,36 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will you be my valentine? 💋</title>
     
-    <link rel="icon" type="image/x-icon" href="public/heart.gif">
-
-    <link rel="stylesheet" href="style.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Handjet:wght@100..900&family=Tiny5&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+        /* BASIC PAGE STYLING */
+        body {
+            background-color: #ffe5ec; /* Soft pink background */
+            font-family: 'DotGothic16', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* PHOTO STYLING: Resized and Tilted */
+        .jpg {
+            width: 200px;           /* Decreased size */
+            height: auto;
+            border: 8px solid white; /* Polaroid look */
+            border-bottom: 25px solid white; 
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            
+            /* The Tilt */
+            transform: rotate(-7deg); 
+            
+            transition: transform 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .jpg:hover {
+            transform: rotate(0deg) scale(1.1); /* Straightens on hover */
+        }
+
+        /* BUTTON STYLING */
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: 0.2s;
+            font-family: 'DotGothic16', sans-serif;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #adb5bd;
+            color: white;
+        }
+
+        #responseText {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff4d6d;
+            font-size: 1.2rem;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
 
     <div class="container">
-        <h1 class="main-title">Priya, Will you be my valentine? 💖</h1>
+        <h1>Priya, Will you be my valentine? 💖</h1>
 
-        <div class="image-wrapper">
-            <img src="https://i.ibb.co/6JHqvS00/Anshul.jpg" alt="Valentine Image" class="jpg">
-        </div>
+        <img src="https://i.ibb.co/6JHqvS00/Anshul.jpg" alt="Cute Valentine Image" class="jpg">
 
         <div class="buttons">
-            <button id="yesBtn" class="btn">Yes</button>
-            <button id="noBtn" class="btn">No</button>
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
         </div>
 
-        <p id="responseText" class="message"></p>
+        <p id="responseText"></p>
     </div>
 
     <canvas id="heartsCanvas"></canvas>
 
     <script src="script.js"></script>
-    
+
 </body>
 </html>
