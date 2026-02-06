@@ -40,7 +40,7 @@
             margin-bottom: 20px;
         }
 
-        /* PHOTO STYLING: Fixed the CSS selector issue here */
+        /* PHOTO STYLING */
         .valentine-photo {
             width: 200px;
             height: auto;
@@ -48,16 +48,13 @@
             border-bottom: 25px solid white; 
             border-radius: 4px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            
-            /* The Tilt */
             transform: rotate(-7deg); 
-            
             transition: transform 0.3s ease;
             margin: 20px 0;
         }
 
         .valentine-photo:hover {
-            transform: rotate(0deg) scale(1.1); /* Straightens on hover */
+            transform: rotate(0deg) scale(1.1);
         }
 
         /* BUTTON STYLING */
@@ -100,9 +97,10 @@
             font-weight: bold;
             color: #ff4d6d;
             font-size: 1.5rem;
-            min-height: 2rem; /* Reserves space so layout doesn't jump */
+            min-height: 2rem;
         }
 
+        /* BACKGROUND CANVAS */
         canvas {
             position: absolute;
             top: 0;
@@ -110,59 +108,13 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 1; /* Behind container */
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Priya, Will you be my valentine? 💖</h1>
-
-        <img src="Anshul.jpg" alt="Cute Valentine Image" class="valentine-photo">
-
-        <div class="buttons">
-            <button id="yesBtn">Yes</button>
-            <button id="noBtn">No</button>
-        </div>
-
-        <p id="responseText"></p>
-    </div>
-
     <canvas id="heartsCanvas"></canvas>
 
-    <script>
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const responseText = document.getElementById('responseText');
-
-        // ACTION FOR "YES" BUTTON
-        yesBtn.addEventListener('click', () => {
-            // 1. Change the text to English
-            responseText.innerText = "See you on Saturday 💖";
-            
-            // 2. Blast Confetti
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#ff4d6d', '#ffccd5', '#fff']
-            });
-        });
-
-        // ACTION FOR "NO" BUTTON (Moves away on hover)
-        noBtn.addEventListener('mouseover', moveButton);
-        noBtn.addEventListener('click', moveButton);
-
-        function moveButton() {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
-        }
-    </script>
-
-</body>
-</html>
+    <div class="container">
+        <h1>Priya, Will you be my valentine? 💖</h1>
